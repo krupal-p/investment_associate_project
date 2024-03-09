@@ -1,3 +1,4 @@
+import argparse
 import atexit
 import sys
 from datetime import datetime
@@ -8,7 +9,6 @@ import pandas as pd
 from flask import Flask
 from flask_restful import Api, Resource
 from logger import log
-from server_argument_parser import parser
 from utils import (
     add_ticker,
     calculate_avg_and_sigma,
@@ -161,6 +161,30 @@ def at_keyboard_interrupt():
 atexit.register(at_keyboard_interrupt)
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Process arguments when server starts")
+
+    parser.add_argument(
+        "-t",
+        "--tickers",
+        nargs="+",
+        default=["AAPL"],
+        help="If specified, download data for all the US tickers specified. If this option is not specified, the server will download data for ticker 'AAPL'",
+    )
+    parser.add_argument(
+        "-p",
+        "--port",
+        type=int,
+        default=8000,
+        help="It specifies the network port for the server. This argument is optional, and default port is 8000.",
+    )
+    parser.add_argument(
+        "-m",
+        "--minutes",
+        type=int,
+        default=5,
+        choices=[5, 15, 30, 60],
+        help="It specifies the sample data being downloaded. It only accepts (5,15,30,60) as inputs, and default value is 5.",
+    )
     # parses initial arguments
     args = parser.parse_args()
     log.info(args)
