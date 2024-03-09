@@ -9,3 +9,4 @@ waitress
 pytest
 PyYAML
 matplotlib
+scikit-learn
