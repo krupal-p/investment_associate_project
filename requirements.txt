@@ -7,5 +7,4 @@ requests
 ipykernel
 waitress
 pytest
-concurrent-log-handler
 PyYAML
