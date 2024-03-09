@@ -1,0 +1,63 @@
+[2024-03-08 21:29:17,281] [94646] [INFO] [server] Namespace(tickers=['AAPL', 'MSFT'], port=5173, minutes=5)
+[2024-03-08 21:29:17,282] [94646] [INFO] [utils] Getting historical data from Alpha Vantage API for AAPL
+[2024-03-08 21:29:20,720] [94646] [INFO] [utils] Getting historical data from Alpha Vantage API for MSFT
+[2024-03-08 21:29:24,392] [94646] [INFO] [server] Server startup tasks completed
+[2024-03-08 21:29:24,400] [94646] [INFO] [server] Trading server started...accepting requests from client
+[2024-03-08 21:29:24,410] [94646] [INFO] [wasyncore] Serving on http://[::]:5173
+[2024-03-08 21:29:24,410] [94646] [INFO] [wasyncore] Serving on http://0.0.0.0:5173
+[2024-03-08 21:37:31,425] [97981] [INFO] [server] Namespace(tickers=['AAPL', 'MSFT'], port=5173, minutes=5)
+[2024-03-08 21:37:31,426] [97981] [INFO] [utils] Getting historical data from Alpha Vantage API for AAPL
+[2024-03-08 21:37:35,358] [97981] [INFO] [utils] Getting historical data from Alpha Vantage API for MSFT
+[2024-03-08 21:37:38,737] [97981] [INFO] [server] Server startup tasks completed
+[2024-03-08 21:37:38,745] [97981] [INFO] [server] Trading server started...accepting requests from client
+[2024-03-08 21:37:38,752] [97981] [INFO] [wasyncore] Serving on http://[::]:5173
+[2024-03-08 21:37:38,753] [97981] [INFO] [wasyncore] Serving on http://0.0.0.0:5173
+[2024-03-08 21:37:42,915] [98065] [INFO] [client] Namespace(server_address='127.0.0.1:5173')
+[2024-03-08 21:37:42,935] [98065] [INFO] [client] Connected to trading server at http://127.0.0.1:5173
+[2024-03-08 21:37:42,935] [98065] [INFO] [client] Running client
+[2024-03-08 21:37:58,021] [97981] [ERROR] [app] Exception on /data/2024-03-05-13-00 [GET]
+Traceback (most recent call last):
+  File "/Users/krupal/Downloads/investment_associate_project/.venv/lib/python3.11/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/krupal/Downloads/investment_associate_project/.venv/lib/python3.11/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/krupal/Downloads/investment_associate_project/.venv/lib/python3.11/site-packages/flask_restful/__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/krupal/Downloads/investment_associate_project/.venv/lib/python3.11/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/krupal/Downloads/investment_associate_project/.venv/lib/python3.11/site-packages/flask_restful/__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "server.py", line 48, in get
+    query_datetime: datetime = datetime.strptime(query_time, "%Y-%m-%d-%H:%M")
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2024-03-05-13-00' does not match format '%Y-%m-%d-%H:%M'
+[2024-03-08 21:37:58,030] [98065] [ERROR] [client] Server error, unable to get the latest price and signal
+[2024-03-08 21:38:24,087] [97981] [INFO] [server] Getting realtime data for: AAPL
+[2024-03-08 21:38:27,362] [97981] [INFO] [server] Getting realtime data for: MSFT
+[2024-03-08 21:38:30,185] [98065] [INFO] [client] AAPL   170.32, -1
+[2024-03-08 21:38:30,185] [98065] [INFO] [client] MSFT   403.12, -1
+[2024-03-08 21:39:20,199] [98065] [INFO] [client] Deleted ticker AAPL
+[2024-03-08 21:39:23,872] [97981] [INFO] [utils] Getting historical data from Alpha Vantage API for AAPL
+[2024-03-08 21:39:27,215] [98065] [INFO] [client] Added ticker AAPL
+[2024-03-08 21:39:29,487] [97981] [INFO] [utils] Getting historical data from Alpha Vantage API for GOOG
+[2024-03-08 21:39:32,917] [98065] [INFO] [client] Added ticker GOOG
+[2024-03-08 21:39:34,608] [97981] [INFO] [server] Getting realtime data for: MSFT
+[2024-03-08 21:39:37,140] [97981] [INFO] [server] Getting realtime data for: AAPL
+[2024-03-08 21:39:40,265] [97981] [INFO] [server] Getting realtime data for: GOOG
+[2024-03-08 21:39:43,231] [98065] [INFO] [client] report.csv updated with latest data
+[2024-03-08 21:40:08,717] [97981] [INFO] [server] Getting realtime data for: MSFT
+[2024-03-08 21:40:11,223] [97981] [INFO] [server] Getting realtime data for: AAPL
+[2024-03-08 21:40:13,781] [97981] [INFO] [server] Getting realtime data for: GOOG
+[2024-03-08 21:40:16,403] [98065] [INFO] [client] MSFT   406.22, 0
+[2024-03-08 21:40:16,403] [98065] [INFO] [client] AAPL   170.73, 0
+[2024-03-08 21:40:16,404] [98065] [INFO] [client] GOOG   136.29, 0

@@ -40,6 +40,8 @@ Instruct the server to recreate report.csv with latest data, signal, pnl. Report
 
 Exit the client.
 
+API Keys for Alpha Vantage and FINHUB can be specified in the config.txt file.
+
 ## Project 2
 
 Analysis of the data can be found in the notebook under project_2 folder.
