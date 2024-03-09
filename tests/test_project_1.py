@@ -21,5 +21,5 @@ def test_get_realtime_quote():
     data = get_realtime_quote("AAPL")
 
     assert data is not None
-    assert type(data["price"]) == float
-    assert type(data["datetime"]) == datetime
+    assert isinstance(data["price"], float)
+    assert isinstance(data["datetime"], datetime)
