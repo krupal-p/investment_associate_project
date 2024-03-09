@@ -1,0 +1,11 @@
+pandas
+numpy
+Flask
+Flask-RESTful
+finnhub-python
+requests
+ipykernel
+waitress
+pytest
+concurrent-log-handler
+PyYAML

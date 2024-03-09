@@ -1,0 +1,25 @@
+version: 1
+disable_existing_loggers: True
+formatters:
+  simple:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  elogging:
+    format: "[%(asctime)s] [%(process)d] [%(levelname)s] [%(module)s] %(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: elogging
+    stream: ext://sys.stdout
+
+  info_file_handler:
+    class: logging.FileHandler
+    level: INFO
+    formatter: elogging
+    encoding: utf8
+    filename: project.log
+
+root:
+  level: INFO
+  handlers: [console, info_file_handler]
