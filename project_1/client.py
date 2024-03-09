@@ -47,12 +47,7 @@ def is_valid_server_address(server_address):
 
 
 def main():
-    """Main function to run the client
-    The client can query the Server in multiple ways. The client is also a long running process that receives inputs interactively from the user and displays outputs.
-    The client is run from the command line with one command line argument
-    –-server <ip>:<port>
-    While the client is running, the user can enter the following commands.
-    """
+    """Main function to run the client"""
     log.info("Running client")
 
     while True:
