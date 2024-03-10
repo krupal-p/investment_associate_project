@@ -51,48 +51,51 @@ def main():
     log.info("Running client")
 
     while True:
-        input_command = input("Enter command: ")
-        if input_command == "exit":
-            log.info("Exiting client")
-            break
+        try:
+            input_command = input("Enter command: ")
+            if input_command.lower() == "exit":
+                log.info("Exiting client")
+                break
 
-        if input_command == "report":
-            r = requests.get(url=base_url + "/report", timeout=30)
-            if r.status_code == 200:
-                log.info(r.json())
-            else:
-                log.info(r.json())
-            continue
+            if input_command.lower() == "report":
+                r = requests.get(url=base_url + "/report", timeout=30)
+                if r.status_code == 200:
+                    log.info(r.json())
+                else:
+                    log.info(r.json())
+                continue
 
-        command, arg = input_command.split(" ")
-        if command == "add":
-            r = requests.post(url=base_url + f"/add_ticker/{arg}", timeout=30)
-            if r.status_code == 200:
-                log.info(f"Added ticker {arg}")
-            elif r.status_code == 208:
-                log.info(f"Ticker {arg} already in server data")
-            else:
-                log.error(f"Error adding ticker {arg} to server data")
-            continue
+            command, arg = input_command.split(" ")
+            if command.lower() == "add":
+                r = requests.post(url=base_url + f"/add_ticker/{arg}", timeout=30)
+                if r.status_code == 200:
+                    log.info(f"Added ticker {arg}")
+                elif r.status_code == 208:
+                    log.info(f"Ticker {arg} already in server data")
+                else:
+                    log.error(f"Error adding ticker {arg} to server data")
+                continue
 
-        if command == "delete":
-            r = requests.delete(url=base_url + f"/del_ticker/{arg}", timeout=30)
-            if r.status_code == 200:
-                log.info(f"Deleted ticker {arg}")
-            elif r.status_code == 404:
-                log.info(f"{arg} not in server data")
-            continue
+            if command.lower() == "delete":
+                r = requests.delete(url=base_url + f"/del_ticker/{arg}", timeout=30)
+                if r.status_code == 200:
+                    log.info(f"Deleted ticker {arg}")
+                elif r.status_code == 404:
+                    log.info(f"{arg} not in server data")
+                continue
 
-        if command == "data":
-            r = requests.get(url=base_url + f"/data/{arg}", timeout=30)
-            if r.status_code == 200:
-                data: dict[str, dict[str, Any]] = r.json()
-                for ticker in data:
-                    log.info(
-                        f"{ticker}   {data[ticker]['price']}, {data[ticker]['signal']}",
-                    )
-            else:
-                log.error("Server error, unable to get the latest price and signal")
+            if command.lower() == "data":
+                r = requests.get(url=base_url + f"/data/{arg}", timeout=30)
+                if r.status_code == 200:
+                    data: dict[str, dict[str, Any]] = r.json()
+                    for ticker in data:
+                        log.info(
+                            f"{ticker}   {data[ticker]['price']}, {data[ticker]['signal']}",
+                        )
+                else:
+                    log.error("Server error, unable to get the latest price and signal")
+        except Exception as e:
+            log.error(f"Error: {e}")
 
 
 if __name__ == "__main__":
