@@ -12,7 +12,7 @@
 
 `cd project_1`
 
-`python server.py --tickers AAPL MSFT GOOGL --port 7000`
+`python server.py --tickers AAPL MSFT GOOGL --port 8000`
 
 #### Starting the client
 
