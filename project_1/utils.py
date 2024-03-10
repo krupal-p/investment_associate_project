@@ -26,7 +26,8 @@ def get_alpha_vantage_historical_data(ticker: str, interval: int) -> pd.DataFram
         interval (int): The time interval for the historical data in minutes.
 
     Returns:
-        pandas.DataFrame: A DataFrame containing the historical data with columns 'datetime' and 'price'.
+        pd.DataFrame: A DataFrame containing the historical data with columns 'datetime' and 'price',
+                      sorted by datetime in ascending order.
     """
     log.info("Getting historical data from Alpha Vantage API for %s", ticker)
 
@@ -203,7 +204,7 @@ def get_signal(df, query_datetime) -> int | None:
 
 
 def save_report(data: dict[str, pd.DataFrame]):
-    """Saves all tickers data to a single csv file named report.csv
+    """Saves all tickers data to a single csv file named report.csv sorted by datetime and ticker
 
     Args:
         data (dict[str, pd.DataFrame]): A dictionary containing ticker data as pandas DataFrames.

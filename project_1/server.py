@@ -30,7 +30,7 @@ if not Path("logs/").exists():
 # Classes for Flask-restful routes/endpoints
 class HomePage(Resource):
     def get(self):
-        return "Connected to trading server"
+        return "Trading server is running...accepting requests from client"
 
 
 class Data(Resource):
@@ -92,8 +92,11 @@ class AddTicker(Resource):
 
 
 def get_latest_data():
-    """Function to get realtime data from Finnhub for every symbol and append to existing dataframe.
-    Returns None
+    """
+    Retrieves the latest data for each ticker from Finnhub API and appeneds to existing dataframe. Then recalculates signal and pnl.
+
+    Returns:
+        dict: A dictionary containing the latest data for each ticker.
     """
     result = {}
     for ticker in data:
