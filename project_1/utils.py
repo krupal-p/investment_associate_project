@@ -8,11 +8,11 @@ import pandas as pd
 import requests
 from logger import log
 
+# Loads the config file for API keys
 config = ConfigParser()
 config.read(Path(__file__).parent / "config.txt")
 
 
-# Loads the config file for API keys
 ALPHA_VANTAGE_API_KEY = config["API_KEYS"]["ALPHA_VANTAGE_API_KEY"]
 FINNHUB_API_KEY = config["API_KEYS"]["FINNHUB_API_KEY"]
 
@@ -220,4 +220,8 @@ def save_report(data: dict[str, pd.DataFrame]):
 
         report_df = pd.concat([report_df, data_df])
 
+    report_df = report_df.sort_values(
+        ["datetime", "ticker"],
+        ascending=True,
+    ).reset_index(drop=True)
     report_df.to_csv("data/report.csv", index=False)
