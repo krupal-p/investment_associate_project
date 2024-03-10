@@ -11,6 +11,9 @@ class Logger:
 
         logfile = "logs/project.log"
 
+        if not Path("logs/").exists():
+            Path("logs/").mkdir()
+
         if Path(log_config_path).exists():
             with Path.open(Path(log_config_path)) as f:
                 config_ = yaml.safe_load(f.read())
